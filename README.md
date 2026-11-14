@@ -37,6 +37,8 @@
 - **Свой интерфейс:** главный экран, меню программ и «Недавние» в палитре TriggerOS, свои значки, своя анимация загрузки.
 - **Linux-программы в окнах:** собственный Wayland-композитор `trigwm`; окна Linux живут в списке задач рядом с Android.
 - **Tterminal:** терминал в стиле «16 бит» (пиксельный шрифт Terminus, палитра TriggerOS); строка ввода всегда над клавиатурой.
+- **Браузер Cromite** (Chromium без сервисов Google, с блокировкой рекламы).
+- **Удаление долгим нажатием** — и Android-, и Linux-программ.
 - **Установщик:** выбираешь пальцем браузер, офис, GIMP, Krita, mpv и другие — и они ставятся сами и появляются в меню.
 - **Ядро:** своя сборка L4T 4.9 — zram с выгрузкой, планировщик питания GPU, правки дисплея.
 - **«Консоль»:** настройки джойконов и консоли на языке системы (RU/EN).
@@ -62,6 +64,8 @@ like on ChromeOS. No reboot, no second desktop.
 - **Own interface:** home screen, app drawer and Recents in the TriggerOS palette, own icons and boot animation.
 - **Linux apps in windows:** our own Wayland compositor `trigwm`; Linux windows sit in the task list next to Android apps.
 - **Tterminal:** a "16-bit" terminal (Terminus pixel font, TriggerOS palette); the input line always stays above the keyboard.
+- **Cromite browser** (Chromium without Google services, with ad blocking).
+- **Long-press to uninstall** — both Android and Linux apps.
 - **Installer:** pick a browser, office suite, GIMP, Krita, mpv and more with your finger — they install and show up in the menu.
 - **Kernel:** our own L4T 4.9 build — zram writeback, GPU power gating, display fixes.
 - **Console app:** Joy-Con and device settings in the system language (EN/RU).
