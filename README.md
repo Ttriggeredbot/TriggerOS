@@ -48,7 +48,7 @@
 Установка на внутреннюю память (eMMC) тоже возможна — см. раздел в инструкции.
 
 ### Статус
-`0.7` — первый публичный релиз. Это бета: возможны ошибки — пишите в [Issues](https://github.com/Ttriggeredbot/TriggerOS/issues).
+`0.7.1` — первый публичный релиз. Это бета: возможны ошибки — пишите в [Issues](https://github.com/Ttriggeredbot/TriggerOS/issues).
 
 ---
 
@@ -73,7 +73,7 @@ In short: hekate → partition the SD card for Android → copy the boot kit →
 Installing to internal storage (eMMC) is also possible — see the guide.
 
 ### Status
-`0.7` is the first public release. It is a beta: bugs are possible — please report them in [Issues](https://github.com/Ttriggeredbot/TriggerOS/issues).
+`0.7.1` is the first public release. It is a beta: bugs are possible — please report them in [Issues](https://github.com/Ttriggeredbot/TriggerOS/issues).
 
 ---
 

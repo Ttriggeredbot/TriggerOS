@@ -17,8 +17,8 @@ Download from [Releases](https://github.com/Ttriggeredbot/TriggerOS/releases/lat
 
 | File | What it is |
 |---|---|
-| `TriggerOS-0.7-20261114-nx_tab.zip` | the system itself (installed through recovery, **do not unzip**) |
-| `TriggerOS-0.7-boot-sd.zip` | SD card boot kit (unzip to the root of the card) |
+| `TriggerOS-0.7.1-20261114-nx_tab.zip` | the system itself (installed through recovery, **do not unzip**) |
+| `TriggerOS-0.7.1-boot-sd.zip` | SD card boot kit (unzip to the root of the card) |
 | `SHA256SUMS.txt` | checksums |
 
 ## Installing to the SD card
@@ -32,7 +32,7 @@ Download from [Releases](https://github.com/Ttriggeredbot/TriggerOS/releases/lat
 
 ### 2. Boot kit
 1. In hekate: **Tools → USB Tools → SD Card** — the card shows up on the computer as a USB drive.
-2. Unzip `TriggerOS-0.7-boot-sd.zip` **to the root of the card** (the `bootloader` and `switchroot` folders merge with existing ones).
+2. Unzip `TriggerOS-0.7.1-boot-sd.zip` **to the root of the card** (the `bootloader` and `switchroot` folders merge with existing ones).
 3. Safely eject the card on the computer and close USB mode in hekate.
 
 ### 3. Flash the boot partitions
@@ -48,7 +48,7 @@ Download from [Releases](https://github.com/Ttriggeredbot/TriggerOS/releases/lat
 2. **Apply update → Apply from ADB.**
 3. Connect the console to the computer and run:
    ```
-   adb sideload TriggerOS-0.7-20261114-nx_tab.zip
+   adb sideload TriggerOS-0.7.1-20261114-nx_tab.zip
    ```
    The counter may stop at ~47% and print `Total xfer: 1.00x` — that is normal.
 4. When recovery reports a successful install — **Reboot system now**.
