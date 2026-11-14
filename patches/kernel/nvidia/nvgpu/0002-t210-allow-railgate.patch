@@ -1,0 +1,16 @@
+diff --git a/drivers/gpu/nvgpu/os/linux/driver_common.c b/drivers/gpu/nvgpu/os/linux/driver_common.c
+index 60f2e90..81c31dc 100644
+--- a/drivers/gpu/nvgpu/os/linux/driver_common.c
++++ b/drivers/gpu/nvgpu/os/linux/driver_common.c
+@@ -275,7 +275,10 @@ static void nvgpu_init_pm_vars(struct gk20a *g)
+ 		 * suspend/resume and can lead to ACR failure on resume
+ 		 * as it expects GPU to be reset on every resume.
+ 		 */
+-		if (!of_property_read_bool(dev->of_node, "power-domains")) {
++		/* TriggerOS: правило для чипов с BPMP (T186+). У T210 нет BPMP и узла power-domains,
++		 * GPU обесточивается через PMC (как в L4T r32) — railgate не запрещаем. */
++		if (platform->platform_chip_id != TEGRA_210 &&
++		    !of_property_read_bool(dev->of_node, "power-domains")) {
+ 			platform->can_railgate_init = false;
+ 		}
+ 

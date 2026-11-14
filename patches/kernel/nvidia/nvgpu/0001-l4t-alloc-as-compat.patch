@@ -1,0 +1,61 @@
+diff --git a/drivers/gpu/nvgpu/os/linux/ioctl_ctrl.c b/drivers/gpu/nvgpu/os/linux/ioctl_ctrl.c
+index de42d7c..196be89 100644
+--- a/drivers/gpu/nvgpu/os/linux/ioctl_ctrl.c
++++ b/drivers/gpu/nvgpu/os/linux/ioctl_ctrl.c
+@@ -2222,6 +2222,45 @@ out:
+ 	return err;
+ }
+ 
++/*
++ * TriggerOS: совместимость с пользовательскими драйверами L4T r32 (glibc, Linux-приложения).
++ * Они передают ALLOC_AS в старом 16-байтном формате (без va_range_*); в новой ABI размер
++ * аргумента входит в номер ioctl, поэтому без этого слоя ядро отвечает ENOTTY.
++ * Значения по умолчанию — как у старого nvgpu: VA от big_page_size<<10 до user_size,
++ * без UNIFIED_VA граница малых/больших страниц на 16 ГБ.
++ */
++struct nvgpu_alloc_as_args_l4t {
++	__u32 big_page_size;
++	__s32 as_fd;
++	__u32 flags;
++	__u32 reserved;
++};
++#define NVGPU_GPU_IOCTL_ALLOC_AS_L4T \
++	_IOWR(NVGPU_GPU_IOCTL_MAGIC, 8, struct nvgpu_alloc_as_args_l4t)
++
++static int gk20a_ctrl_alloc_as_l4t(struct gk20a *g,
++		struct nvgpu_alloc_as_args_l4t *old)
++{
++	struct nvgpu_alloc_as_args args;
++	u32 big = old->big_page_size;
++	int err;
++
++	(void) memset(&args, 0, sizeof(args));
++	if (big == 0U)
++		big = g->ops.mm.gmmu.get_default_big_page_size();
++	args.big_page_size = old->big_page_size;
++	args.flags = old->flags;
++	args.va_range_start = U64(big) << U64(10);
++	args.va_range_end = g->mm.channel.user_size;
++	if ((old->flags & NVGPU_GPU_IOCTL_ALLOC_AS_FLAGS_UNIFIED_VA) == 0U &&
++	    old->big_page_size != 0U)
++		args.va_range_split = U64(SZ_1G) * U64(16);
++	err = gk20a_ctrl_alloc_as(g, &args);
++	if (err == 0)
++		old->as_fd = args.as_fd;
++	return err;
++}
++
+ long gk20a_ctrl_dev_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
+ {
+ 	struct gk20a_ctrl_priv *priv = filp->private_data;
+@@ -2419,6 +2458,10 @@ long gk20a_ctrl_dev_ioctl(struct file *filp, unsigned int cmd, unsigned long arg
+ 		err = gk20a_ctrl_alloc_as(g,
+ 			(struct nvgpu_alloc_as_args *)buf);
+ 		break;
++	case NVGPU_GPU_IOCTL_ALLOC_AS_L4T:
++		err = gk20a_ctrl_alloc_as_l4t(g,
++			(struct nvgpu_alloc_as_args_l4t *)buf);
++		break;
+ 	case NVGPU_GPU_IOCTL_OPEN_TSG:
+ 		err = gk20a_ctrl_open_tsg(g, priv->cdev,
+ 			(struct nvgpu_gpu_open_tsg_args *)buf);

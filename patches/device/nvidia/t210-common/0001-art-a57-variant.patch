@@ -1,0 +1,13 @@
+--- a/BoardConfigCommon.mk
++++ b/BoardConfigCommon.mk
+@@ -19,7 +19,9 @@
+ TARGET_CPU_ABI := arm64-v8a
+ TARGET_CPU_ABI2 :=
+ TARGET_CPU_VARIANT := generic
+-TARGET_CPU_VARIANT_RUNTIME := cortex-a53
++# TriggerOS: T210 runs Android only on Cortex-A57. ART treats a53/a57/generic as a53-paired and
++# emits erratum 835769/843419 workarounds; cortex-a35 gives the exact A57 ISA set (v8.0+CRC) without them.
++TARGET_CPU_VARIANT_RUNTIME := cortex-a35
+ TARGET_ARCH := arm64
+ TARGET_ARCH_VARIANT := armv8-a
+ 

@@ -1,0 +1,23 @@
+diff --git a/drivers/video/tegra/dc/dc.c b/drivers/video/tegra/dc/dc.c
+index 25ca0ba28..32dda6787 100644
+--- a/drivers/video/tegra/dc/dc.c
++++ b/drivers/video/tegra/dc/dc.c
+@@ -4116,6 +4116,18 @@ static int tegra_dc_set_out(struct tegra_dc *dc, struct tegra_dc_out *out,
+ 			dc->bl_initialized = false;
+ 		else
+ 			dc->bl_initialized = true;
++		/*
++		 * TriggerOS: загрузчик (hekate) включает панель на 60 Гц. Если в DT задана другая частота панели
++		 * (nvidia,dsi-refresh-rate, напр. 64 Гц на OLED), «бесшовный» режим оставил бы 60 Гц до первого
++		 * выключения экрана. Полная инициализация при загрузке — тот же путь, что при пробуждении экрана.
++		 * При 60 Гц в DT поведение прежнее.
++		 */
++		if (dc->bl_initialized && dc->out->dsi->refresh_rate &&
++				dc->out->dsi->refresh_rate != 60) {
++			dev_info(&dc->ndev->dev, "TriggerOS: refresh %d Hz != 60, full DSI init\n",
++				dc->out->dsi->refresh_rate);
++			dc->bl_initialized = false;
++		}
+ 	}
+ #endif
+ 	mode = tegra_dc_get_override_mode(dc);

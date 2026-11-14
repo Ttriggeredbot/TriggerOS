@@ -1,0 +1,17 @@
+diff --git a/src/com/android/settings/deviceinfo/firmwareversion/LineageVersionDetailPreferenceController.java b/src/com/android/settings/deviceinfo/firmwareversion/LineageVersionDetailPreferenceController.java
+index 9399292405d..e266bda4972 100644
+--- a/src/com/android/settings/deviceinfo/firmwareversion/LineageVersionDetailPreferenceController.java
++++ b/src/com/android/settings/deviceinfo/firmwareversion/LineageVersionDetailPreferenceController.java
+@@ -43,9 +43,10 @@ public class LineageVersionDetailPreferenceController extends BasePreferenceCont
+ 
+     private static final String KEY_LINEAGE_VERSION_PROP = "ro.lineage.version";
+ 
+-    private static final String PLATLOGO_PACKAGE_NAME = "org.lineageos.lineageparts";
++    // TriggerOS: own easter egg (vortex -> T -> ignition) lives in the TriggerOS home app
++    private static final String PLATLOGO_PACKAGE_NAME = "org.triggeros.home";
+     private static final String PLATLOGO_ACTIVITY_CLASS =
+-            PLATLOGO_PACKAGE_NAME + ".logo.PlatLogoActivity";
++            PLATLOGO_PACKAGE_NAME + ".Ignition";
+ 
+     private final UserManager mUserManager;
+     private final long[] mHits = new long[ACTIVITY_TRIGGER_COUNT];

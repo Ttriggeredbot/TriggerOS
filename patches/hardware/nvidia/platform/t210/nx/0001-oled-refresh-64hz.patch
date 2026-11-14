@@ -1,0 +1,13 @@
+diff --git a/kernel-dts/nx-panels/panel-s-720p-7-0.dtsi b/kernel-dts/nx-panels/panel-s-720p-7-0.dtsi
+index ca691e1..f0e7453 100644
+--- a/kernel-dts/nx-panels/panel-s-720p-7-0.dtsi
++++ b/kernel-dts/nx-panels/panel-s-720p-7-0.dtsi
+@@ -39,7 +39,7 @@
+ 				/*nvidia,dsi-lp-read-cmd-mode-freq = <100000>; not parsed and so 10MHz is used */
+ 				nvidia,dsi-no-pkt-seq-eot; /* Not parsed and not needed because no burst */
+ 				nvidia,dsi-pixel-format = <TEGRA_DSI_PIXEL_FORMAT_24BIT_P>;
+-				nvidia,dsi-refresh-rate = <60>;
++				nvidia,dsi-refresh-rate = <64>;	/* TriggerOS: 64 Гц (проверено на устройстве: 64,66 Гц, Android сам учит период) */
+ 				nvidia,dsi-video-data-type = <TEGRA_DSI_VIDEO_TYPE_VIDEO_MODE>;
+ 				nvidia,dsi-video-clock-mode = <TEGRA_DSI_VIDEO_CLOCK_TX_ONLY>;
+ 				nvidia,dsi-video-burst-mode = <TEGRA_DSI_VIDEO_NONE_BURST_MODE>;

@@ -1,0 +1,26 @@
+diff --git a/quickstep/src/com/android/launcher3/taskbar/TaskbarActivityContext.java b/quickstep/src/com/android/launcher3/taskbar/TaskbarActivityContext.java
+index 82275948ae..a2ae23a531 100644
+--- a/quickstep/src/com/android/launcher3/taskbar/TaskbarActivityContext.java
++++ b/quickstep/src/com/android/launcher3/taskbar/TaskbarActivityContext.java
+@@ -474,7 +474,7 @@ public class TaskbarActivityContext extends BaseTaskbarContext {
+      */
+     public boolean isPhoneMode() {
+         if (mDeviceProfile.isTaskbarPresent &&
+-                !SettingsCache.INSTANCE.get(this).getValue(ENABLE_TASKBAR, 1)) {
++                !SettingsCache.INSTANCE.get(this).getValue(ENABLE_TASKBAR, 0)) {
+             return true;
+         }
+         return ENABLE_TASKBAR_NAVBAR_UNIFICATION
+diff --git a/src/com/android/launcher3/DeviceProfile.java b/src/com/android/launcher3/DeviceProfile.java
+index 1af0700a1a..e6892aeb4e 100644
+--- a/src/com/android/launcher3/DeviceProfile.java
++++ b/src/com/android/launcher3/DeviceProfile.java
+@@ -1924,7 +1924,7 @@ public class DeviceProfile {
+      */
+     public Rect getHotseatLayoutPadding(Context context) {
+         boolean isTaskbarPresent = this.isTaskbarPresent &&
+-                SettingsCache.INSTANCE.get(context).getValue(ENABLE_TASKBAR, 1);
++                SettingsCache.INSTANCE.get(context).getValue(ENABLE_TASKBAR, 0);
+         Rect hotseatBarPadding = new Rect();
+         if (isVerticalBarLayout()) {
+             // The hotseat icons will be placed in the middle of the hotseat cells.

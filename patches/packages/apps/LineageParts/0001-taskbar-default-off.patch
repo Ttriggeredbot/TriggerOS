@@ -1,0 +1,14 @@
+diff --git a/src/org/lineageos/lineageparts/input/ButtonSettings.java b/src/org/lineageos/lineageparts/input/ButtonSettings.java
+index ef59043..bc84b5a 100644
+--- a/src/org/lineageos/lineageparts/input/ButtonSettings.java
++++ b/src/org/lineageos/lineageparts/input/ButtonSettings.java
+@@ -459,8 +459,7 @@ public class ButtonSettings extends SettingsPreferenceFragment
+             } else {
+                 mEnableTaskbar.setOnPreferenceChangeListener(this);
+                 mEnableTaskbar.setChecked(LineageSettings.System.getInt(resolver,
+-                        LineageSettings.System.ENABLE_TASKBAR,
+-                        isLargeScreen(requireContext()) ? 1 : 0) == 1);
++                        LineageSettings.System.ENABLE_TASKBAR, 0) == 1);
+             }
+         }
+ 

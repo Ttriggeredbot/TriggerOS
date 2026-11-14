@@ -1,0 +1,17 @@
+diff --git a/lineage/lib/main/java/org/lineageos/platform/internal/TrustInterfaceService.java b/lineage/lib/main/java/org/lineageos/platform/internal/TrustInterfaceService.java
+index 85013adb..17f64622 100644
+--- a/lineage/lib/main/java/org/lineageos/platform/internal/TrustInterfaceService.java
++++ b/lineage/lib/main/java/org/lineageos/platform/internal/TrustInterfaceService.java
+@@ -78,10 +78,9 @@ public class TrustInterfaceService extends LineageSystemService {
+         if (phase == PHASE_BOOT_COMPLETED) {
+             mNotificationManager = mContext.getSystemService(NotificationManager.class);
+ 
+-            // Onboard
++            // TriggerOS: no "Discover Trust" onboarding notification (not our UI); warnings stay off
++            // until the user opens Trust once (hasOnboardedUser), exactly as before onboarding.
+             if (!hasOnboardedUser()) {
+-                postOnBoardingNotification();
+-                registerLocaleChangedReceiver();
+                 return;
+             }
+ 

@@ -1,0 +1,31 @@
+diff --git a/packages/SystemUI/res/values/colors.xml b/packages/SystemUI/res/values/colors.xml
+index 1cfdeaeecbc6..427f593067d7 100644
+--- a/packages/SystemUI/res/values/colors.xml
++++ b/packages/SystemUI/res/values/colors.xml
+@@ -252,4 +252,9 @@
+     <!-- Rear Display Education -->
+     <color name="rear_display_overlay_animation_background_color">#1E1B17</color>
+     <color name="rear_display_overlay_dialog_background_color">#1E1B17</color>
++    <!-- TriggerOS: active Quick Settings tiles in the TriggerOS accent (Orchid) instead of the pastel
++         Material tone; overridable by the TriggerOSSystemUI overlay. -->
++    <color name="triggeros_shade_active">#FFB13FB3</color>
++    <color name="triggeros_on_shade_active">#FFF8EEF7</color>
++    <color name="triggeros_on_shade_active_variant">#FFEBD3EA</color>
+ </resources>
+diff --git a/packages/SystemUI/res/values/styles.xml b/packages/SystemUI/res/values/styles.xml
+index 46d89f4552c0..36b56b59d9cf 100644
+--- a/packages/SystemUI/res/values/styles.xml
++++ b/packages/SystemUI/res/values/styles.xml
+@@ -498,9 +498,9 @@
+         <item name="onSurfaceVariant">?androidprv:attr/materialColorOnSurfaceVariant</item>
+         <item name="outline">?androidprv:attr/materialColorOutline</item>
+ 
+-        <item name="shadeActive">?androidprv:attr/customColorShadeActive</item>
+-        <item name="onShadeActive">?androidprv:attr/customColorOnShadeActive</item>
+-        <item name="onShadeActiveVariant">?androidprv:attr/customColorOnShadeActiveVariant</item>
++        <item name="shadeActive">@color/triggeros_shade_active</item>
++        <item name="onShadeActive">@color/triggeros_on_shade_active</item>
++        <item name="onShadeActiveVariant">@color/triggeros_on_shade_active_variant</item>
+         <item name="shadeInactive">?androidprv:attr/customColorShadeInactive</item>
+         <item name="onShadeInactive">?androidprv:attr/customColorOnShadeInactive</item>
+         <item name="onShadeInactiveVariant">?androidprv:attr/customColorOnShadeInactiveVariant</item>
