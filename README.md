@@ -25,6 +25,13 @@
   <img src="assets/apps.png" width="49%" alt="Apps">
 </p>
 
+<p align="center">
+  <img src="assets/vulkan.png" width="70%" alt="Vulkan (NVK) in a window on the Switch">
+</p>
+<p align="center">
+  <sub>Vulkan (Mesa&nbsp;NVK) на GPU Switch — в окне Android · Vulkan (Mesa&nbsp;NVK) on the Switch GPU, in an Android window</sub>
+</p>
+
 ---
 
 ## Русский
@@ -36,6 +43,7 @@
 ### Что внутри
 - **Свой интерфейс:** главный экран, меню программ и «Недавние» в палитре TriggerOS, свои значки, своя анимация загрузки.
 - **Linux-программы в окнах:** собственный Wayland-композитор `trigwm`; окна Linux живут в списке задач рядом с Android.
+- **Vulkan на GPU Switch:** свой модуль ядра `trigdrm` открывает GPU Tegra X1 немодифицированному Mesa NVK — `vkcube` и `vkmark` работают в окне. Это дорога к DXVK / Proton / Steam.
 - **Tterminal:** терминал в стиле «16 бит» (пиксельный шрифт Terminus, палитра TriggerOS); строка ввода всегда над клавиатурой.
 - **Браузер Cromite** (Chromium без сервисов Google, с блокировкой рекламы).
 - **Удаление долгим нажатием** — и Android-, и Linux-программ.
@@ -63,6 +71,7 @@ like on ChromeOS. No reboot, no second desktop.
 ### What's inside
 - **Own interface:** home screen, app drawer and Recents in the TriggerOS palette, own icons and boot animation.
 - **Linux apps in windows:** our own Wayland compositor `trigwm`; Linux windows sit in the task list next to Android apps.
+- **Vulkan on the Switch GPU:** a custom kernel module `trigdrm` exposes the Tegra X1 GPU to unmodified Mesa NVK — `vkcube` and `vkmark` run in a window. This is the path to DXVK / Proton / Steam.
 - **Tterminal:** a "16-bit" terminal (Terminus pixel font, TriggerOS palette); the input line always stays above the keyboard.
 - **Cromite browser** (Chromium without Google services, with ad blocking).
 - **Long-press to uninstall** — both Android and Linux apps.
